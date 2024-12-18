@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.png">
+    <title>Random Dog Image</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0;
+            background-image: url("images.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        img {
+            /* max-width: 100%; */
+            height: 80%;
+            border-radius: 10px;
+        }
+        #image-container{
+            width: 80%;
+            height: 50%;   
+            display: flex;
+            justify-content: center;
+            align-items: center;     
+            flex-direction: column;
+        }
+        button{
+            width: 50%;
+            height: 50%;
+            background-color: rgb(45, 240, 15);
+            border-radius: 10px;
+            border: none;
+            margin-top: 10px;
+        }
+        #btnContainer{
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Dog Image</h1>
+    <div id="image-container">
+        <img id="dog-image" alt="Random Dog">
+        <div id="btnContainer"> 
+            <button id="new-image">Get New Image</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="sw.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+            navigator.serviceWorker.register('../sw.js').then( () => {
+                console.log('Service Worker Registered')
+                })
+            })
+        }
+    </script>
+</body>
+</html>
